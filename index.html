@@ -3,133 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My SCST1133 E-Portfolio</title>
+  <title>SCST1133 E-Portfolio | Data Engineering</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header>
-    <div class="logo">Portfolio.</div>
-    <nav>
-      <a href="#about" class="nav-btn">About</a>
-      <a href="#work" class="nav-btn">Work</a>
-      <a href="#reflection" class="nav-btn">Reflection</a>
-      <!-- Theme Toggle Switch -->
-      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
-        <span id="theme-icon">🌙</span>
-      </button>
-    </nav>
+  <header class="site-header">
+    <div class="header-content">
+      <div class="header-brand">
+        <!-- Replace with UTM Faculty of Computing Logo -->
+        <img src="images/utm-fc-logo.png" alt="UTM Faculty of Computing Logo" class="faculty-logo">
+        <div>
+          <h1>Your Name</h1>
+          <p class="subtitle">SCST1133 Data Engineering Ecosystem</p>
+        </div>
+      </div>
+
+      <!-- Main Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('home')">Home & Profile</button>
+        <button class="tab-btn" onclick="switchTab('journey')">Learning Journey</button>
+        <button class="tab-btn" onclick="switchTab('works')">Works & Artifacts</button>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-      <div class="hero-content">
-        <span class="badge">SCST1133 Data Engineering</span>
-        <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
-        <p class="subtitle">Crafting modern data pipelines & interactive user experiences.</p>
-        <div class="hero-btns">
-          <a href="#work" class="cta-btn primary">Explore My Work</a>
-          <a href="artifacts/industry-talk.pdf" target="_blank" class="cta-btn secondary">Download PDF Artifact</a>
+  <main class="container">
+
+    <!-- TAB 1: HOME & PROFILE CONTENT -->
+    <section id="home" class="tab-content active">
+      <!-- Profile Hero Card -->
+      <div class="profile-hero">
+        <div class="avatar-wrapper">
+          <!-- Replace profile-placeholder.jpg with your photo -->
+          <img src="images/profile-placeholder.jpg" alt="Profile Picture" class="profile-img">
+        </div>
+        <div class="profile-info">
+          <h2>Your Name</h2>
+          <h3 class="headline">Bachelor of Computer Science (Data Engineering) Student</h3>
+          <p class="summary">
+            Aspiring Data Engineer with a strong interest in scalable data pipelines, cloud architecture, and data management. Passionate about solving complex data problems and transforming raw datasets into actionable insights.
+          </p>
+          
+          <!-- Social & External Links -->
+          <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank" class="social-btn">
+              <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.1-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-btn">
+              <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://yourusername.github.io/eportfolio" target="_blank" class="social-btn">
+              <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8M12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96M4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26m.81 2h2.95c.32 1.3.8 2.5 1.38 3.56A8.03 8.03 0 0 1 5.07 16M8.02 8H5.07a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 7.25 8h.77m3.98 12c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96M13.34 14h-2.68c-.1-.66-.16-1.33-.16-2s.06-1.34.16-2h2.68c.1.66.16 1.34.16 2s-.06 1.34-.16 2m1.39 5.56c.58-1.06 1.06-2.26 1.38-3.56h2.95a8.03 8.03 0 0 1-3.56 3.56M16.36 14c.08-.66.14-1.34.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38Z"/></svg>
+              Live Portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Background & Stackable Images Section -->
+      <div class="card">
+        <h2>About Me & Background</h2>
+        <p>
+          I am currently pursuing my Degree in Computer Science with a specialization in Data Engineering at Universiti Teknologi Malaysia (UTM). My primary academic focus revolves around understanding how large-scale data systems operate, designing robust ETL pipelines, and delivering data-driven solutions for modern business computing.
+        </p>
+        
+        <!-- Stackable 3-Image Showcase Template -->
+        <div class="stackable-gallery">
+          <div class="gallery-item">
+            <img src="images/bg-1.jpg" alt="Data Engineering Workstation">
+            <span>Data Analysis & Pipeline Development</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/bg-2.jpg" alt="UTM Computing Environment">
+            <span>UTM Academic Collaborations</span>
+          </div>
+          <div class="gallery-item">
+            <img src="images/bg-3.jpg" alt="Design Thinking & Prototyping">
+            <span>System Prototyping & Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Skills Section -->
+      <div class="card">
+        <h2>Core Skills & Technical Interests</h2>
+        <div class="skills-grid">
+          <div class="skill-badge">Data Engineering Pipelines</div>
+          <div class="skill-badge">Python & SQL</div>
+          <div class="skill-badge">ETL Processes</div>
+          <div class="skill-badge">Figma UI/UX Prototyping</div>
+          <div class="skill-badge">Database Management Systems</div>
+          <div class="skill-badge">Data Acquisition & Governance</div>
+        </div>
+      </div>
+
+      <!-- Education History (3 Institutes Template) -->
+      <div class="card">
+        <h2>Educational Background</h2>
+        <div class="education-container">
+
+          <!-- Institute 1 -->
+          <div class="edu-item">
+            <img src="images/utm-logo.png" alt="UTM Logo" class="edu-logo">
+            <div class="edu-details">
+              <h3>Universiti Teknologi Malaysia (UTM)</h3>
+              <p class="edu-course">Bachelor of Computer Science (Data Engineering)</p>
+              <p class="edu-years">2024 – Present</p>
+            </div>
+          </div>
+
+          <!-- Institute 2 -->
+          <div class="edu-item">
+            <img src="images/college-logo.png" alt="Pre-University Logo" class="edu-logo">
+            <div class="edu-details">
+              <h3>Name of Pre-University / Matriculation / College</h3>
+              <p class="edu-course">Foundation in Science / Diploma in Computer Science</p>
+              <p class="edu-years">2022 – 2024</p>
+            </div>
+          </div>
+
+          <!-- Institute 3 -->
+          <div class="edu-item">
+            <img src="images/school-logo.png" alt="High School Logo" class="edu-logo">
+            <div class="edu-details">
+              <h3>Name of Secondary / High School</h3>
+              <p class="edu-course">Sijil Pelajaran Malaysia (SPM)</p>
+              <p class="edu-years">2017 – 2021</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="content-card">
-      <h2>Professional Profile</h2>
-      <p>Write a short professional introduction here. Highlight your passion for data engineering, problem-solving, and building modern web applications.</p>
-    </section>
 
-    <!-- Work Section with Category Filter Tabs -->
-    <section id="work">
-      <h2>Selected Work</h2>
-      
-      <!-- Filter Tabs -->
-      <div class="tab-container">
-        <button class="tab-btn active" onclick="filterWork('all')">All</button>
-        <button class="tab-btn" onclick="filterWork('ui')">UI/UX & Figma</button>
-        <button class="tab-btn" onclick="filterWork('data')">Data Pipelines</button>
-      </div>
-
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card" data-category="ui">
-          <div class="img-container">
-            <img src="images/project-screenshot.png" alt="Figma Prototype Screenshot" class="popup-trigger">
-            <div class="overlay"><span>Click to Preview</span></div>
+    <!-- TAB 2: LEARNING JOURNEY CONTENT -->
+    <section id="journey" class="tab-content">
+      <div class="card">
+        <h2>SCST1133 Learning Journey</h2>
+        <p>An overview of key milestones, course topics, and foundational themes covered during the SCST1133 Data Engineering Ecosystem course.</p>
+        
+        <div class="journey-grid">
+          <div class="journey-box">
+            <h3>1. Foundations of Data Engineering</h3>
+            <p>Understanding the fundamental concepts of data platforms, storage paradigms, relational vs non-relational databases, and modern data architectures.</p>
           </div>
-          <div class="project-info">
-            <span class="tag">Design Thinking</span>
-            <h3>Figma Interactive Prototype</h3>
-            <p>Designed a user-centric dashboard wireframe for monitoring data pipelines.</p>
+          <div class="journey-box">
+            <h3>2. Tools & Technologies</h3>
+            <p>Hands-on exposure to design tools like Figma, programming languages like Python and SQL, and tools for data acquisition and scraping.</p>
           </div>
-        </article>
+          <div class="journey-box">
+            <h3>3. Data Governance & Ethics</h3>
+            <p>Principles of data privacy, regulatory compliance, quality control, security, and maintaining operational standards across data lifecycles.</p>
+          </div>
+          <div class="journey-box">
+            <h3>4. Industry Connections</h3>
+            <p>Insights into real-world applications of data engineering, modern enterprise practices, and career paths within the data ecosystem.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Reflection Section -->
-    <section id="reflection" class="content-card">
-      <h2>Course Reflection</h2>
-      <p>Explain what you learned throughout SCST1133 and the key takeaways you plan to apply to future engineering projects.</p>
+
+    <!-- TAB 3: WORKS & ARTIFACTS CONTENT -->
+    <section id="works" class="tab-content">
+      <div class="card">
+        <h2>Works & Artifacts</h2>
+        <p>Detailed project deliverables, design artifacts, and analytical reflections completed during SCST1133.</p>
+      </div>
+
+      <!-- PROJECT 1 CARD -->
+      <article class="card project-card">
+        <h2 class="project-title">Project 1: Design Thinking and Figma Prototyping</h2>
+        
+        <!-- Section C: Deliverables -->
+        <div class="project-section">
+          <h3>Section C: Deliverables & Artifacts</h3>
+          <img src="images/figma-prototype-screenshot.png" alt="Screenshot of Figma Prototype" class="project-img">
+          <p>This project focused on applying Design Thinking methodologies to create an intuitive user interface for a data management application.</p>
+          <p><strong>Artifact Links:</strong> 
+            <a href="#" target="_blank">Figma Prototype Link</a> | 
+            <a href="#" target="_blank">Presentation Video / Slides</a>
+          </p>
+        </div>
+
+        <!-- Section D: Reflection -->
+        <div class="project-section">
+          <h3>Section D: Reflection</h3>
+          <p><strong>Challenges Faced:</strong> Translating functional data engineering requirements into a simplified user workflow required multiple iterative wireframes.</p>
+          <p><strong>Key Decisions:</strong> Opted for a streamlined dashboard navigation structure to minimize cognitive load for end users.</p>
+          <p><strong>Course Concepts:</strong> Directly connected to human-centric design, requirements gathering, and system wireframing in data ecosystem design.</p>
+          <p><strong>Future Improvements:</strong> Incorporate interactive micro-animations and dynamic real-time data preview widgets.</p>
+        </div>
+
+        <!-- Section E: Course Takeaways -->
+        <div class="project-section">
+          <h3>Section E: Course Takeaways</h3>
+          <p>Enhanced my understanding of user experience design principles and solidified how proper interface prototyping serves as the gateway to effective data capture and system user engagement.</p>
+        </div>
+
+        <!-- Section F: Credits & AI Disclosure -->
+        <div class="project-section disclosure-box">
+          <h3>Section F: Credits & AI Disclosure</h3>
+          <p><strong>Sources & Datasets:</strong> Figma Community UI Kit assets.</p>
+          <p><strong>AI & Tool Usage:</strong> ChatGPT was used for structuring presentation bullet points and refining UI copy tone. Figma was utilized for wireframing and prototyping.</p>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 CARD -->
+      <article class="card project-card">
+        <h2 class="project-title">Project 2: Data Acquisition Code & Analysis</h2>
+        
+        <!-- Section C: Deliverables -->
+        <div class="project-section">
+          <h3>Section C: Deliverables & Artifacts</h3>
+          <img src="images/data-acquisition-code.png" alt="Screenshot of Data Acquisition Code" class="project-img">
+          <p>A Python-based data extraction project that programmatically retrieves unstructured web data, cleans it, and transforms it into structured CSV/JSON formats.</p>
+          <p><strong>Artifact Links:</strong> 
+            <a href="#" target="_blank">GitHub Repository Code</a> | 
+            <a href="#" target="_blank">View Dataset Report</a>
+          </p>
+        </div>
+
+        <!-- Section D: Reflection -->
+        <div class="project-section">
+          <h3>Section D: Reflection</h3>
+          <p><strong>Challenges Faced:</strong> Handling missing values, inconsistent HTML structures, and dynamic web page loads during data extraction.</p>
+          <p><strong>Key Decisions:</strong> Implemented robust exception handling and automated data validation rules prior to file output generation.</p>
+          <p><strong>Course Concepts:</strong> Applied core principles of data ingestion, ETL lifecycle, and initial data validation pipelines.</p>
+          <p><strong>Future Improvements:</strong> Scale the script to operate asynchronously and integrate automated database storage.</p>
+        </div>
+
+        <!-- Section E: Course Takeaways -->
+        <div class="project-section">
+          <h3>Section E: Course Takeaways</h3>
+          <p>Gained fundamental programming skills required for acquiring data from diverse public sources, understanding the importance of structural consistency when building automated pipelines.</p>
+        </div>
+
+        <!-- Section F: Credits & AI Disclosure -->
+        <div class="project-section disclosure-box">
+          <h3>Section F: Credits & AI Disclosure</h3>
+          <p><strong>Sources & Datasets:</strong> Target website data collected from public e-commerce listings.</p>
+          <p><strong>AI & Tool Usage:</strong> GitHub Copilot was utilized for code syntax optimization and debugging regex expressions.</p>
+        </div>
+      </article>
+
     </section>
+
   </main>
 
-  <!-- Image Popup Modal -->
-  <div id="imageModal" class="modal">
-    <span class="close-btn">×</span>
-    <img class="modal-content" id="modalImg" alt="Expanded Preview">
-    <div id="caption"></div>
-  </div>
-
-  <footer>
-    <p>© 2026 Your Name • SCST1133 E-Portfolio</p>
+  <footer class="site-footer">
+    <p>© 2026 Your Name | UTM Faculty of Computing | SCST1133 E-Portfolio</p>
   </footer>
 
+  <!-- Simple Tab Switcher JavaScript -->
   <script>
-    // 1. Dark/Light Mode Switcher
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-
-    themeToggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      themeIcon.textContent = isDark ? '☀️' : '🌙';
-    });
-
-    // 2. Image Modal Popup
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const captionText = document.getElementById("caption");
-    const closeBtn = document.getElementsByClassName("close-btn")[0];
-
-    document.querySelectorAll(".popup-trigger").forEach(img => {
-      img.onclick = function () {
-        modal.style.display = "flex";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-      }
-    });
-
-    closeBtn.onclick = () => modal.style.display = "none";
-    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
-
-    // 3. Project Filter Tabs
-    function filterWork(category) {
-      const cards = document.querySelectorAll('.project-card');
-      const tabs = document.querySelectorAll('.tab-btn');
-
+    function switchTab(tabId) {
+      // Hide all tabs
+      const tabs = document.querySelectorAll('.tab-content');
       tabs.forEach(tab => tab.classList.remove('active'));
-      event.target.classList.add('active');
 
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      // Deactivate all buttons
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Activate selected tab and button
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
     }
   </script>
 </body>
