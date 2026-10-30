@@ -1,85 +1,78 @@
+:root {
+  --burgundy: #5a0815;
+  --burgundy-dark: #3d030c;
+  --cream-bg: #f4f1ea;
+  --white: #ffffff;
+  --black: #111111;
+  --gray-light: #e5e0d8;
+  --gray-text: #666666;
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  color: #1f2937;
-  background-color: #f4f6f9;
-  font-family: Arial, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
+  background-color: var(--cream-bg);
+  color: var(--black);
+  font-family: var(--font-body);
+  line-height: 1.5;
 }
 
-/* Header & Navigation Styling */
+/* Header & Nav */
 .site-header {
-  background-color: #ffffff;
-  border-bottom: 2px solid #e5e7eb;
+  background: var(--cream-bg);
+  border-bottom: 2px solid var(--black);
+  padding: 16px 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.header-content {
-  width: min(1000px, 92%);
+.header-inner {
+  width: min(1100px, 92%);
   margin: auto;
-  padding: 20px 0 0;
-}
-
-.header-brand {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.faculty-logo {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
 
-.header-brand h1 {
-  margin: 0;
-  font-size: 1.6rem;
-  color: #8a1538; /* UTM Maroon accent */
-}
-
-.subtitle {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #6b7280;
-}
-
-/* Tabs UI */
 .nav-tabs {
   display: flex;
-  gap: 8px;
-  border-bottom: 2px solid transparent;
+  gap: 12px;
 }
 
 .tab-btn {
-  background: none;
+  background: transparent;
   border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #4b5563;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
+  padding: 6px 12px;
+  color: var(--black);
+  border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
 }
 
-.tab-btn:hover {
-  color: #8a1538;
+.tab-btn.active, .tab-btn:hover {
+  border-bottom: 2px solid var(--burgundy);
+  color: var(--burgundy);
 }
 
-.tab-btn.active {
-  color: #8a1538;
-  border-bottom-color: #8a1538;
-}
-
-/* Tab Switching Display Control */
 .tab-content {
   display: none;
 }
@@ -88,196 +81,282 @@ body {
   display: block;
 }
 
-/* Container & Cards */
 .container {
-  width: min(1000px, 92%);
-  margin: 24px auto;
+  width: min(1100px, 92%);
+  margin: 32px auto;
 }
 
-.card {
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-  margin-bottom: 24px;
-}
-
-.card h2 {
-  margin-top: 0;
-  color: #8a1538;
-  border-bottom: 2px solid #f3f4f6;
-  padding-bottom: 8px;
-}
-
-/* Profile Hero Layout */
-.profile-hero {
+/* Hero Section */
+.hero-section {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 24px;
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-  margin-bottom: 24px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
-.avatar-wrapper {
-  flex-shrink: 0;
-}
-
-/* Formal Circular Profile Picture Styling */
-.profile-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #8a1538;
-}
-
-.profile-info {
+.hero-left, .hero-right {
   flex: 1;
+  min-width: 240px;
+}
+
+.hero-subtext {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  margin-bottom: 8px;
+}
+
+.faculty-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.hero-center {
+  flex: 1.2;
   min-width: 280px;
 }
 
-.profile-info h2 {
+.hero-main-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--burgundy);
   margin: 0;
-  font-size: 1.8rem;
+  line-height: 0.95;
+  letter-spacing: 1px;
 }
 
-.headline {
-  margin: 4px 0 12px;
-  font-size: 1.05rem;
-  color: #4b5563;
-  font-weight: 500;
+.hero-image-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
 }
 
-.summary {
+.hero-profile-img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--black);
+}
+
+.script-overlay {
+  position: absolute;
+  bottom: 0;
+  right: -20px;
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--burgundy);
+  transform: rotate(-10deg);
+}
+
+.hero-bio {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-circle {
+  width: 36px;
+  height: 36px;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.social-circle:hover {
+  background: var(--burgundy);
+  transform: translateY(-2px);
+}
+
+/* Cards & Layout */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.card-dots {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  opacity: 0.5;
+}
+
+.dark-card {
+  background-color: var(--burgundy);
+  color: var(--white);
+}
+
+.light-card {
+  background-color: var(--white);
+  border: 1px solid var(--gray-light);
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-top: 10px;
   margin-bottom: 16px;
-  color: #374151;
+  letter-spacing: 1px;
 }
 
-/* Social Buttons */
-.social-links {
+.light-text {
+  color: var(--white);
+}
+
+/* Who Am I Elements */
+.stat-pills {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+}
+
+.stat-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.skills-tag-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
 }
 
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background-color: #f3f4f6;
-  color: #1f2937;
-  text-decoration: none;
+.skill-pill {
+  background: var(--white);
+  color: var(--burgundy);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Stackable Gallery */
+.section-desc {
   font-size: 0.88rem;
-  font-weight: 600;
-  border-radius: 6px;
-  transition: background-color 0.2s;
+  color: var(--gray-text);
 }
 
-.social-btn:hover {
-  background-color: #e5e7eb;
-  color: #8a1538;
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-}
-
-/* Stackable Images Gallery */
 .stackable-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .gallery-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: #f9fafb;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 160px;
+  height: 120px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .gallery-item span {
-  padding: 10px;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #4b5563;
   text-align: center;
+  margin-top: 6px;
 }
 
-/* Core Skills Badges */
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
-}
+/* Education Cards */
+.margin-top { margin-top: 24px; }
+.margin-top-sm { margin-top: 16px; }
 
-.skill-badge {
-  background: #f3e8ee;
-  color: #8a1538;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-/* Education List */
-.education-container {
-  display: flex;
-  flex-direction: column;
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
-.edu-item {
+.edu-card {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 12px;
-  background: #f9fafb;
-  border-left: 4px solid #8a1538;
-  border-radius: 4px;
+  background: var(--cream-bg);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-light);
+}
+
+.edu-logo-wrapper {
+  background: var(--white);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .edu-logo {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
 }
 
-.edu-details h3 {
+.edu-info h3 {
   margin: 0;
-  font-size: 1.05rem;
-  color: #111827;
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .edu-course {
   margin: 2px 0;
-  font-size: 0.9rem;
-  color: #4b5563;
+  font-size: 0.82rem;
+  color: var(--gray-text);
 }
 
 .edu-years {
   margin: 0;
-  font-size: 0.82rem;
-  color: #6b7280;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--burgundy);
 }
 
 /* Journey Grid */
@@ -285,75 +364,115 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .journey-box {
-  background: #f9fafb;
+  background: rgba(255,255,255,0.1);
   padding: 16px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .journey-box h3 {
+  font-family: var(--font-heading);
   margin-top: 0;
-  font-size: 1rem;
-  color: #8a1538;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
 
-/* Project Cards & Sections */
+.journey-box p {
+  font-size: 0.85rem;
+}
+
+/* Works & Project Cards */
+.card-header-banner {
+  background: var(--black);
+  color: var(--white);
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.card-header-banner h2 {
+  font-family: var(--font-heading);
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
 .project-card {
-  border-top: 4px solid #8a1538;
+  margin-bottom: 32px;
 }
 
-.project-title {
-  font-size: 1.4rem;
-  border-bottom: 2px solid #f3f4f6;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 
-.project-section {
-  margin-bottom: 20px;
-}
-
-.project-section h3 {
-  font-size: 1.05rem;
-  color: #1f2937;
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 1px;
   margin-bottom: 8px;
+  color: var(--burgundy);
 }
 
-.project-img {
+.dark-card .section-label {
+  color: var(--cream-bg);
+}
+
+.img-frame img {
   width: 100%;
-  max-height: 350px;
+  max-height: 250px;
   object-fit: cover;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  margin: 10px 0;
+  border: 1px solid var(--black);
 }
 
-.disclosure-box {
-  background: #f9fafb;
+.link-pills {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pill-link {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--burgundy);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 20px;
+}
+
+.light-pill {
+  background: var(--white);
+  color: var(--burgundy);
+}
+
+.dark-box {
+  background: var(--burgundy-dark);
   padding: 16px;
-  border-radius: 8px;
-  border-left: 4px solid #6b7280;
-  font-size: 0.9rem;
+  border-radius: 10px;
 }
 
-a {
-  color: #8a1538;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #5c0e25;
+.light-box {
+  background: var(--cream-bg);
+  color: var(--black);
+  padding: 16px;
+  border-radius: 10px;
 }
 
 /* Footer */
 .site-footer {
   text-align: center;
-  padding: 24px 0;
-  color: #6b7280;
-  font-size: 0.88rem;
-  border-top: 1px solid #e5e7eb;
+  padding: 32px 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gray-text);
+  border-top: 2px solid var(--gray-light);
+  margin-top: 40px;
 }
