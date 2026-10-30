@@ -7,38 +7,92 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Navigation -->
   <header>
-    <h1>Your Name</h1>
-    <p>SCST1133 Data Engineering Ecosystem</p>
+    <div class="logo">Portfolio.</div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#work">Selected Work</a>
-      <a href="#reflection">Reflection</a>
+      <a href="#about" class="nav-btn">About</a>
+      <a href="#work" class="nav-btn">Selected Work</a>
+      <a href="#reflection" class="nav-btn">Reflection</a>
     </nav>
   </header>
 
   <main>
-    <section id="about">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
+        <p class="subtitle">SCST1133 Data Engineering Ecosystem</p>
+        <a href="#work" class="cta-btn">Explore My Work</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
       <h2>Professional Profile</h2>
-      <p>Write a short professional introduction here.</p>
+      <p>Write a short professional introduction here. Highlight your passion for data engineering, problem-solving, and building modern web applications.</p>
     </section>
 
-    <section id="work">
+    <!-- Work Section -->
+    <section id="work" class="fade-in">
       <h2>Selected Work</h2>
-      <article>
-        <h3>Design Thinking and Figma</h3>
-        <img src="images/project-screenshot.png"
-             alt="Screenshot of my Figma prototype">
-        <p>Explain the artifact and your contribution.</p>
-      </article>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="img-container">
+            <img src="images/project-screenshot.png" alt="Screenshot of my Figma prototype" class="popup-trigger">
+            <div class="overlay"><span>Click to Preview</span></div>
+          </div>
+          <div class="project-info">
+            <h3>Design Thinking and Figma</h3>
+            <p>Explain the artifact and your contribution. Highlight the tools used and the core methodology applied.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="reflection">
+    <!-- Reflection Section -->
+    <section id="reflection" class="fade-in">
       <h2>Course Reflection</h2>
-      <p>Explain what you learned and what you would improve.</p>
+      <p>Explain what you learned throughout SCST1133 and the key takeaways you plan to apply to future engineering projects.</p>
     </section>
   </main>
 
-  <footer><p>© 2026 Your Name</p></footer>
+  <!-- Image Modal / Popup -->
+  <div id="imageModal" class="modal">
+    <span class="close-btn">×</span>
+    <img class="modal-content" id="modalImg" alt="Expanded project preview">
+    <div id="caption"></div>
+  </div>
+
+  <footer>
+    <p>© 2026 Your Name • Built for SCST1133</p>
+  </footer>
+
+  <script>
+    // Image Popup (Modal) Logic
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const captionText = document.getElementById("caption");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
+
+    document.querySelectorAll(".popup-trigger").forEach(img => {
+      img.onclick = function () {
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      }
+    });
+
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
 </body>
 </html>
