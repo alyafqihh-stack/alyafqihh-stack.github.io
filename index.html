@@ -8,13 +8,17 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <header>
     <div class="logo">Portfolio.</div>
     <nav>
       <a href="#about" class="nav-btn">About</a>
-      <a href="#work" class="nav-btn">Selected Work</a>
+      <a href="#work" class="nav-btn">Work</a>
       <a href="#reflection" class="nav-btn">Reflection</a>
+      <!-- Theme Toggle Switch -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
     </nav>
   </header>
 
@@ -22,55 +26,79 @@
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
       <div class="hero-content">
+        <span class="badge">SCST1133 Data Engineering</span>
         <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
-        <p class="subtitle">SCST1133 Data Engineering Ecosystem</p>
-        <a href="#work" class="cta-btn">Explore My Work</a>
+        <p class="subtitle">Crafting modern data pipelines & interactive user experiences.</p>
+        <div class="hero-btns">
+          <a href="#work" class="cta-btn primary">Explore My Work</a>
+          <a href="artifacts/industry-talk.pdf" target="_blank" class="cta-btn secondary">Download PDF Artifact</a>
+        </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="fade-in">
+    <section id="about" class="content-card">
       <h2>Professional Profile</h2>
       <p>Write a short professional introduction here. Highlight your passion for data engineering, problem-solving, and building modern web applications.</p>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="fade-in">
+    <!-- Work Section with Category Filter Tabs -->
+    <section id="work">
       <h2>Selected Work</h2>
+      
+      <!-- Filter Tabs -->
+      <div class="tab-container">
+        <button class="tab-btn active" onclick="filterWork('all')">All</button>
+        <button class="tab-btn" onclick="filterWork('ui')">UI/UX & Figma</button>
+        <button class="tab-btn" onclick="filterWork('data')">Data Pipelines</button>
+      </div>
+
       <div class="projects-grid">
-        <article class="project-card">
+        <!-- Project 1 -->
+        <article class="project-card" data-category="ui">
           <div class="img-container">
-            <img src="images/project-screenshot.png" alt="Screenshot of my Figma prototype" class="popup-trigger">
+            <img src="images/project-screenshot.png" alt="Figma Prototype Screenshot" class="popup-trigger">
             <div class="overlay"><span>Click to Preview</span></div>
           </div>
           <div class="project-info">
-            <h3>Design Thinking and Figma</h3>
-            <p>Explain the artifact and your contribution. Highlight the tools used and the core methodology applied.</p>
+            <span class="tag">Design Thinking</span>
+            <h3>Figma Interactive Prototype</h3>
+            <p>Designed a user-centric dashboard wireframe for monitoring data pipelines.</p>
           </div>
         </article>
       </div>
     </section>
 
     <!-- Reflection Section -->
-    <section id="reflection" class="fade-in">
+    <section id="reflection" class="content-card">
       <h2>Course Reflection</h2>
       <p>Explain what you learned throughout SCST1133 and the key takeaways you plan to apply to future engineering projects.</p>
     </section>
   </main>
 
-  <!-- Image Modal / Popup -->
+  <!-- Image Popup Modal -->
   <div id="imageModal" class="modal">
     <span class="close-btn">×</span>
-    <img class="modal-content" id="modalImg" alt="Expanded project preview">
+    <img class="modal-content" id="modalImg" alt="Expanded Preview">
     <div id="caption"></div>
   </div>
 
   <footer>
-    <p>© 2026 Your Name • Built for SCST1133</p>
+    <p>© 2026 Your Name • SCST1133 E-Portfolio</p>
   </footer>
 
   <script>
-    // Image Popup (Modal) Logic
+    // 1. Dark/Light Mode Switcher
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // 2. Image Modal Popup
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const captionText = document.getElementById("caption");
@@ -84,15 +112,25 @@
       }
     });
 
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    };
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
 
-    window.onclick = function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
+    // 3. Project Filter Tabs
+    function filterWork(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
   </script>
 </body>
 </html>
