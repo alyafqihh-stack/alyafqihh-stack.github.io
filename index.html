@@ -3,149 +3,472 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCST1133 E-Portfolio | Data Engineering</title>
-  <!-- Google Fonts for Editorial Typography -->
+  <title>ALYA FAQIHAH | Data Engineering Portfolio</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Top Navigation Bar -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand-title">ALYA FAQIHAH</div>
-      <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('home')">HOME & PROFILE</button>
-        <button class="tab-btn" onclick="switchTab('journey')">LEARNING JOURNEY</button>
-        <button class="tab-btn" onclick="switchTab('works')">WORKS & ARTIFACTS</button>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wine: {
+              50: '#fdf2f4',
+              100: '#fbe6e9',
+              200: '#f7cfd6',
+              600: '#800f29',
+              800: '#4a0017',
+              900: '#2b000d',
+            },
+            cream: {
+              50: '#ffffff',
+              100: '#fcfaf7',
+              200: '#f4efe6',
+              300: '#eae2d3',
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#d4af37',
+              600: '#b48f28',
+            }
+          },
+          fontFamily: {
+            anton: ['Anton', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            script: ['Caveat', 'cursive'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.75', transform: 'scale(1.05)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fcfaf7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4a0017;
+      border-radius: 4px;
+    }
+
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+    }
+    
+    .hero-photo-ring {
+      background: linear-gradient(135deg, #d4af37, #4a0017, #ff758c);
+      padding: 5px;
+      border-radius: 50%;
+    }
+
+    .glass-nav {
+      background: rgba(252, 250, 247, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-cream-100 text-slate-800 font-sans selection:bg-wine-800 selection:text-white min-h-screen flex flex-col justify-between">
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-wine-800/10 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Name -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-wine-800 text-cream-100 flex items-center justify-center font-anton text-xl shadow-md border border-wine-600">
+          AF
+        </div>
+        <div>
+          <span class="font-anton text-2xl tracking-wide text-wine-900 block leading-none">ALYA FAQIHAH</span>
+          <span class="text-xs font-semibold text-wine-600 tracking-wider uppercase">SCST1133 E-Portfolio</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex items-center gap-1 sm:gap-2 bg-wine-900/5 p-1.5 rounded-2xl border border-wine-900/10">
+        <button onclick="switchTab('home')" id="tab-btn-home" class="tab-btn active px-3 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 bg-wine-800 text-white shadow-md">
+          HOME & PROFILE
+        </button>
+        <button onclick="switchTab('journey')" id="tab-btn-journey" class="tab-btn px-3 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 text-wine-900 hover:bg-wine-800/10">
+          LEARNING JOURNEY
+        </button>
+        <button onclick="switchTab('works')" id="tab-btn-works" class="tab-btn px-3 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 text-wine-900 hover:bg-wine-800/10">
+          WORKS & ARTIFACTS
+        </button>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
 
+    <!-- =================================================================== -->
     <!-- TAB 1: HOME & PROFILE CONTENT -->
-    <section id="home" class="tab-content active">
+    <!-- =================================================================== -->
+    <section id="home" class="tab-content active space-y-12">
       
-      <!-- HERO SECTION -->
-      <div class="hero-section">
-        <div class="hero-left">
-          <p class="hero-subtext">SCST1133 Data Engineering Ecosystem</p>
-          <img src="images/utm-fc-logo.png" alt="UTM Faculty of Computing Logo" class="faculty-logo">
-        </div>
+      <!-- HERO BANNER SECTION -->
+      <div class="relative bg-gradient-to-br from-cream-50 via-wine-50/50 to-cream-200 rounded-3xl p-6 sm:p-10 border border-wine-800/15 shadow-xl overflow-hidden">
         
-        <div class="hero-center">
-          <h1 class="hero-main-heading">DATA ENGINEER</h1>
-          <div class="hero-image-container">
-            <img src="images/profile-placeholder.jpg" alt="Profile Picture" class="hero-profile-img">
-            <span class="script-overlay">Portfolio ♡</span>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <p class="hero-bio">
-            CS (Data Engineering) Student @ UTM
-            Tech enthusiast with a decade-long foundation in digital creation—from Roblox game dev at age 10 to data engineering today. 
-            Passionate about software design, data pipelines, and analytics.
-          </p>
-          <div class="social-icons">
-            <a href="https://github.com/yourusername" target="_blank" class="social-circle" title="GitHub">GH</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-circle" title="LinkedIn">IN</a>
-            <a href="https://yourusername.github.io/eportfolio" target="_blank" class="social-circle" title="Live Site">WEB</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- GRID LAYOUT: WHO AM I & QUALIFICATIONS -->
-      <div class="grid-2col">
+        <!-- Background Decorative Elements -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-wine-800/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <!-- WHO AM I (BURGUNDY CARD) -->
-        <div class="card dark-card">
-          <div class="card-dots">•••</div>
-          <h2 class="card-title light-text">WHO AM I</h2>
-          <div class="who-am-i-content">
-            <p>
-              I am currently pursuing a Bachelor of Computer Science (Data Engineering) at Universiti Teknologi Malaysia (UTM). My focus centers on data architecture, ETL workflows, and scalable analytics.
-            </p>
-            <div class="stat-pills">
-              <div class="stat-item"><span class="stat-num">UTM</span><span class="stat-lbl">Student</span></div>
-              <div class="stat-item"><span class="stat-num">4.0</span><span class="stat-lbl">Focus</span></div>
-              <div class="stat-item"><span class="stat-num">2+</span><span class="stat-lbl">Projects</span></div>
-            </div>
-            <div class="skills-tag-group">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">SQL</span>
-              <span class="skill-pill">C++</span>
-              <span class="skill-pill">Figma UI/UX</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- BACKGROUND IMAGES & STACKABLE SHOWCASE -->
-        <div class="card light-card">
-          <div class="card-dots">•••</div>
-          <h2 class="card-title">MY BACKGROUND</h2>
-          <p class="section-desc">A visual glimpse into my academic environment, engineering passion, and collaborative workspace.</p>
-          <div class="stackable-gallery">
-            <div class="gallery-item">
-              <img src="images/bg-1.jpg" alt="JSK student @ KMJ">
-              <span>Digital Technology</span>
-            </div>
-            <div class="gallery-item">
-              <img src="images/bg-2.jpg" alt="Data Engineering & Systems">
-              <span>SQL & Programming Skills</span>
-            </div>
-            <div class="gallery-item">
-              <img src="images/bg-3.jpg" alt="Design & Strategy">
-              <span>System Design</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- EDUCATIONAL INSTITUTES (3 CARDS) -->
-      <div class="card light-card margin-top">
-        <div class="card-dots">•••</div>
-        <h2 class="card-title">EDUCATIONAL BACKGROUND</h2>
-        
-        <div class="education-grid">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
           
-          <!-- Institute 1 -->
-          <div class="edu-card">
-            <div class="edu-logo-wrapper">
-              <img src="images/utm-logo.png" alt="UTM Logo" class="edu-logo">
+          <!-- Left Column: Ecosystem & University Info -->
+          <div class="md:col-span-4 flex flex-col justify-between space-y-6 text-center md:text-left order-2 md:order-1">
+            <div class="inline-flex items-center gap-2 self-center md:self-start bg-wine-800/10 text-wine-900 px-3 py-1.5 rounded-full border border-wine-800/20 text-xs font-bold uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-wine-600 animate-ping"></span>
+              SCST1133 Ecosystem
             </div>
-            <div class="edu-info">
-              <h3>Universiti Teknologi Malaysia (UTM)</h3>
-              <p class="edu-course">Bachelor of Computer Science (Data Engineering)</p>
-              <p class="edu-years">2026 – PRESENT</p>
+
+            <div class="space-y-2">
+              <h3 class="text-xs uppercase font-extrabold tracking-widest text-wine-800/60">Institution</h3>
+              <div class="flex items-center justify-center md:justify-start gap-3 bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-wine-800/10 shadow-sm">
+                <!-- UTM Logo Fallback badge -->
+                <div class="w-12 h-12 rounded-xl bg-wine-800 text-white flex items-center justify-center font-bold text-lg shrink-0 shadow">
+                  UTM
+                </div>
+                <div class="text-left">
+                  <h4 class="font-bold text-wine-900 text-sm leading-tight">Faculty of Computing</h4>
+                  <p class="text-xs text-slate-600">Universiti Teknologi Malaysia</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-3 gap-2 pt-2">
+              <div class="bg-white/90 p-3 rounded-2xl border border-wine-800/10 text-center shadow-sm hover:scale-105 transition-transform">
+                <span class="block font-anton text-2xl text-wine-800">UTM</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase">Degree</span>
+              </div>
+              <div class="bg-white/90 p-3 rounded-2xl border border-wine-800/10 text-center shadow-sm hover:scale-105 transition-transform">
+                <span class="block font-anton text-2xl text-wine-800">CS</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase">Major</span>
+              </div>
+              <div class="bg-white/90 p-3 rounded-2xl border border-wine-800/10 text-center shadow-sm hover:scale-105 transition-transform">
+                <span class="block font-anton text-2xl text-wine-800">2026</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase">Batch</span>
+              </div>
             </div>
           </div>
 
-          <!-- Institute 2 -->
-          <div class="edu-card">
-            <div class="edu-logo-wrapper">
-              <img src="images/college-logo.png" alt="Pre-U Logo" class="edu-logo">
+          <!-- Center Column: POP OUT PROFILE PICTURE & HEADING -->
+          <div class="md:col-span-4 flex flex-col items-center justify-center order-1 md:order-2 space-y-4">
+            
+            <h1 class="font-anton text-4xl sm:text-5xl lg:text-6xl text-wine-900 tracking-tight text-center leading-none">
+              DATA ENGINEER
+            </h1>
+
+            <!-- Glowing POP OUT Profile Container -->
+            <div class="relative group my-2 animate-float">
+              
+              <!-- Radiant Pulse Glow Behind Profile -->
+              <div class="absolute -inset-4 bg-gradient-to-r from-wine-800 via-gold-500 to-wine-600 rounded-full blur-xl opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse-glow"></div>
+
+              <!-- Profile Image Wrapper -->
+              <div class="relative hero-photo-ring shadow-2xl transition duration-500 group-hover:scale-105">
+                <img 
+                  src="images/profile-placeholder.jpg" 
+                  alt="Alya Faqihah Portrait" 
+                  onerror="this.onerror=null; this.src='https://placehold.co/240x240/4a0017/ffffff?text=Alya+Faqihah';" 
+                  class="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-white shadow-inner bg-wine-900"
+                >
+              </div>
+
+              <!-- Script Overlay Tag -->
+              <div class="absolute -bottom-3 right-0 bg-wine-900 text-gold-400 font-script text-2xl px-4 py-1 rounded-full shadow-lg border-2 border-gold-500/50 -rotate-6 group-hover:rotate-0 transition-transform">
+                Portfolio ♡
+              </div>
             </div>
-            <div class="edu-info">
-              <h3>Kolej Matrikulasi Johor (KMJ)</h3>
-              <p class="edu-course">Course of Computer Science</p>
-              <p class="edu-years">2025 – 2026</p>
+
+            <p class="text-xs font-bold text-wine-800/70 tracking-widest uppercase">Alya Faqihah</p>
+          </div>
+
+          <!-- Right Column: Bio & Social Contacts -->
+          <div class="md:col-span-4 flex flex-col justify-between space-y-5 text-center md:text-right order-3">
+            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-wine-800/10 shadow-sm space-y-3">
+              <h3 class="text-xs uppercase font-extrabold tracking-widest text-wine-800">About Me</h3>
+              <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                CS (Data Engineering) Student @ UTM. Tech enthusiast with a decade-long foundation in digital creation—from Roblox game dev at age 10 to data engineering today.
+              </p>
+              <p class="text-xs text-wine-800 font-semibold italic">
+                Passionate about software design, data pipelines, and analytics.
+              </p>
+            </div>
+
+            <!-- Social Pill Buttons -->
+            <div class="flex items-center justify-center md:justify-end gap-3 pt-2">
+              <a href="https://github.com/yourusername" target="_blank" class="flex items-center gap-2 bg-wine-900 hover:bg-wine-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md hover:-translate-y-0.5">
+                <i class="fa-brands fa-github text-sm text-gold-400"></i> GitHub
+              </a>
+              <a href="https://linkedin.com/in/yourusername" target="_blank" class="flex items-center gap-2 bg-wine-900 hover:bg-wine-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md hover:-translate-y-0.5">
+                <i class="fa-brands fa-linkedin text-sm text-gold-400"></i> LinkedIn
+              </a>
+              <a href="https://yourusername.github.io/eportfolio" target="_blank" class="flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-wine-900 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md hover:-translate-y-0.5">
+                <i class="fa-solid fa-globe text-sm"></i> Live Site
+              </a>
             </div>
           </div>
 
-          <!-- Institute 3 -->
-          <div class="edu-card">
-            <div class="edu-logo-wrapper">
-              <img src="images/school-logo.png" alt="High School Logo" class="edu-logo">
+        </div>
+      </div>
+
+
+      <!-- 2-COLUMN GRID: WHO AM I & BACKGROUND GALLERY -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- WHO AM I (RICH BURGUNDY CARD) -->
+        <div class="bg-gradient-to-br from-wine-900 via-wine-800 to-wine-900 text-white rounded-3xl p-7 sm:p-8 border border-wine-600/30 shadow-xl flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-all">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-gold-400 tracking-widest text-xs font-mono font-bold">/// WHO AM I</span>
+              <div class="flex gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+              </div>
             </div>
-            <div class="edu-info">
-              <h3>SMK Seri Gading (SEGA)</h3>
-              <p class="edu-course">Sijil Pelajaran Malaysia (SPM)</p>
-              <p class="edu-years">2023 – 2041</p>
+
+            <h2 class="font-anton text-3xl sm:text-4xl tracking-wide text-cream-100 mb-4">
+              DATA ARCHITECTURE & ANALYTICS
+            </h2>
+
+            <p class="text-cream-200 text-sm sm:text-base leading-relaxed mb-6 font-light">
+              I am currently pursuing a Bachelor of Computer Science (Data Engineering) at Universiti Teknologi Malaysia (UTM). My focus centers on data architecture, ETL workflows, and scalable analytics to turn raw datasets into actionable insights.
+            </p>
+
+            <!-- Stat Pills Inside Burgundy Card -->
+            <div class="grid grid-cols-3 gap-3 mb-6 bg-wine-950/50 p-4 rounded-2xl border border-wine-700/50">
+              <div class="text-center">
+                <span class="block font-anton text-xl text-gold-400">UTM</span>
+                <span class="text-[10px] text-cream-300 uppercase tracking-wider font-semibold">Student</span>
+              </div>
+              <div class="text-center border-x border-wine-700/50">
+                <span class="block font-anton text-xl text-gold-400">4.0</span>
+                <span class="text-[10px] text-cream-300 uppercase tracking-wider font-semibold">Target GPA</span>
+              </div>
+              <div class="text-center">
+                <span class="block font-anton text-xl text-gold-400">2+</span>
+                <span class="text-[10px] text-cream-300 uppercase tracking-wider font-semibold">Key Projects</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-widest text-gold-400 mb-3">Core Tech Stack & Tools</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-wine-700/60 text-cream-100 text-xs font-semibold px-3 py-1.5 rounded-xl border border-wine-500/30 hover:border-gold-400 transition-colors">Python</span>
+              <span class="bg-wine-700/60 text-cream-100 text-xs font-semibold px-3 py-1.5 rounded-xl border border-wine-500/30 hover:border-gold-400 transition-colors">SQL & PostgreSQL</span>
+              <span class="bg-wine-700/60 text-cream-100 text-xs font-semibold px-3 py-1.5 rounded-xl border border-wine-500/30 hover:border-gold-400 transition-colors">C++ Programming</span>
+              <span class="bg-wine-700/60 text-cream-100 text-xs font-semibold px-3 py-1.5 rounded-xl border border-wine-500/30 hover:border-gold-400 transition-colors">Figma UI/UX</span>
+              <span class="bg-wine-700/60 text-cream-100 text-xs font-semibold px-3 py-1.5 rounded-xl border border-wine-500/30 hover:border-gold-400 transition-colors">ETL Pipelines</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MY BACKGROUND (LIGHT ELEVATED CARD WITH GALLERY) -->
+        <div class="bg-white rounded-3xl p-7 sm:p-8 border border-wine-800/15 shadow-xl flex flex-col justify-between hover:shadow-2xl transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-wine-800 tracking-widest text-xs font-mono font-bold">/// VISUAL EXPERIENCE</span>
+              <div class="flex gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-wine-800/20"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-wine-800/20"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-wine-800/20"></span>
+              </div>
+            </div>
+
+            <h2 class="font-anton text-3xl sm:text-4xl tracking-wide text-wine-900 mb-2">
+              MY BACKGROUND & GALLERY
+            </h2>
+            <p class="text-slate-600 text-sm mb-6">
+              A visual glimpse into my academic environment, engineering passion, and collaborative workspace.
+            </p>
+
+            <!-- Interactive Showcase Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+              
+              <!-- Gallery Item 1 -->
+              <div class="group relative rounded-2xl overflow-hidden shadow-md aspect-square bg-slate-100 border border-wine-800/10">
+                <img 
+                  src="images/bg-1.jpg" 
+                  alt="Digital Technology" 
+                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/800f29/ffffff?text=Digital+Tech';" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-wine-900/90 via-wine-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <span class="text-white text-xs font-bold leading-tight">Digital Technology</span>
+                </div>
+              </div>
+
+              <!-- Gallery Item 2 -->
+              <div class="group relative rounded-2xl overflow-hidden shadow-md aspect-square bg-slate-100 border border-wine-800/10">
+                <img 
+                  src="images/bg-2.jpg" 
+                  alt="SQL & Systems" 
+                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/4a0017/ffffff?text=Data+Systems';" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-wine-900/90 via-wine-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <span class="text-white text-xs font-bold leading-tight">SQL & Data Pipelines</span>
+                </div>
+              </div>
+
+              <!-- Gallery Item 3 -->
+              <div class="group relative rounded-2xl overflow-hidden shadow-md aspect-square bg-slate-100 border border-wine-800/10">
+                <img 
+                  src="images/bg-3.jpg" 
+                  alt="System Design" 
+                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/2b000d/ffffff?text=System+Design';" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-wine-900/90 via-wine-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <span class="text-white text-xs font-bold leading-tight">System & UI Design</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex items-center justify-between border-t border-slate-100">
+            <span><i class="fa-solid fa-camera text-wine-800 mr-1"></i> Academic Journey Photos</span>
+            <span class="font-bold text-wine-800">UTM & KMJ</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- EDUCATIONAL BACKGROUND SECTION -->
+      <div class="bg-white rounded-3xl p-7 sm:p-10 border border-wine-800/15 shadow-xl space-y-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-wine-800/10 pb-4">
+          <div>
+            <span class="text-wine-800 tracking-widest text-xs font-mono font-bold">/// ACADEMIC HISTORY</span>
+            <h2 class="font-anton text-3xl sm:text-4xl text-wine-900 tracking-wide mt-1">
+              EDUCATIONAL BACKGROUND
+            </h2>
+          </div>
+          <span class="self-start sm:self-auto bg-wine-800/10 text-wine-800 text-xs font-bold px-3 py-1.5 rounded-full border border-wine-800/20">
+            3 Institutions
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Institute 1: UTM -->
+          <div class="bg-gradient-to-b from-cream-50 to-cream-100 rounded-2xl p-6 border border-wine-800/15 hover:border-wine-800/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-xl bg-wine-800 text-gold-400 font-anton text-xl flex items-center justify-center shadow-md">
+                  UTM
+                </div>
+                <span class="text-[11px] font-extrabold bg-wine-800 text-white px-2.5 py-1 rounded-full">
+                  CURRENT
+                </span>
+              </div>
+              <div>
+                <h3 class="font-bold text-wine-900 text-base group-hover:text-wine-600 transition-colors leading-snug">
+                  Universiti Teknologi Malaysia
+                </h3>
+                <p class="text-xs font-semibold text-slate-700 mt-1">
+                  Bachelor of Computer Science (Data Engineering)
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-wine-800/10 flex items-center justify-between text-xs font-mono text-wine-800">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span class="font-bold">2026 – PRESENT</span>
+            </div>
+          </div>
+
+          <!-- Institute 2: KMJ -->
+          <div class="bg-gradient-to-b from-cream-50 to-cream-100 rounded-2xl p-6 border border-wine-800/15 hover:border-wine-800/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-xl bg-wine-900 text-white font-anton text-xl flex items-center justify-center shadow-md">
+                  KMJ
+                </div>
+                <span class="text-[11px] font-bold bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">
+                  PRE-U
+                </span>
+              </div>
+              <div>
+                <h3 class="font-bold text-wine-900 text-base group-hover:text-wine-600 transition-colors leading-snug">
+                  Kolej Matrikulasi Johor
+                </h3>
+                <p class="text-xs font-semibold text-slate-700 mt-1">
+                  Module Computer Science (JSK Student)
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-wine-800/10 flex items-center justify-between text-xs font-mono text-wine-800">
+              <i class="fa-solid fa-building-columns"></i>
+              <span class="font-bold">2025 – 2026</span>
+            </div>
+          </div>
+
+          <!-- Institute 3: SEGA -->
+          <div class="bg-gradient-to-b from-cream-50 to-cream-100 rounded-2xl p-6 border border-wine-800/15 hover:border-wine-800/40 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-xl bg-wine-900 text-white font-anton text-xl flex items-center justify-center shadow-md">
+                  SEGA
+                </div>
+                <span class="text-[11px] font-bold bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full">
+                  HIGH SCHOOL
+                </span>
+              </div>
+              <div>
+                <h3 class="font-bold text-wine-900 text-base group-hover:text-wine-600 transition-colors leading-snug">
+                  SMK Seri Gading
+                </h3>
+                <p class="text-xs font-semibold text-slate-700 mt-1">
+                  Sijil Pelajaran Malaysia (SPM)
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-wine-800/10 flex items-center justify-between text-xs font-mono text-wine-800">
+              <i class="fa-solid fa-school"></i>
+              <span class="font-bold">2021 – 2025</span>
             </div>
           </div>
 
@@ -154,117 +477,260 @@
 
     </section>
 
-
+    <!-- =================================================================== -->
     <!-- TAB 2: LEARNING JOURNEY CONTENT -->
-    <section id="journey" class="tab-content">
-      <div class="card dark-card">
-        <div class="card-dots">•••</div>
-        <h2 class="card-title light-text">SCST1133 LEARNING JOURNEY</h2>
-        <p class="light-text">Key foundations, themes, tools, and industry connections explored throughout the course.</p>
+    <!-- =================================================================== -->
+    <section id="journey" class="tab-content space-y-8">
+      
+      <div class="bg-gradient-to-br from-wine-900 via-wine-800 to-wine-900 text-white rounded-3xl p-8 sm:p-12 border border-wine-600/30 shadow-2xl space-y-8">
         
-        <div class="journey-grid">
-          <div class="journey-box">
-            <h3>01. FOUNDATIONS</h3>
-            <p>Data platforms, relational vs non-relational storage paradigms, and enterprise data architectures.</p>
-          </div>
-          <div class="journey-box">
-            <h3>02. TOOLS & TECH</h3>
-            <p>Hands-on execution using Figma for design, Python for data manipulation, and web extraction techniques.</p>
-          </div>
-          <div class="journey-box">
-            <h3>03. GOVERNANCE</h3>
-            <p>Principles of data quality control, privacy regulations, ethics, and lifecycle security standards.</p>
-          </div>
-          <div class="journey-box">
-            <h3>04. INDUSTRY CONNECTIONS</h3>
-            <p>Understanding real-world data ecosystem roles, enterprise applications, and modern workflow practices.</p>
-          </div>
+        <div class="max-w-3xl space-y-3">
+          <span class="text-gold-400 tracking-widest text-xs font-mono font-bold">/// SCST1133 COURSE ROADMAP</span>
+          <h2 class="font-anton text-4xl sm:text-5xl tracking-wide text-cream-100">
+            SCST1133 LEARNING JOURNEY
+          </h2>
+          <p class="text-cream-200 text-base font-light leading-relaxed">
+            Key foundations, technical themes, tools, governance frameworks, and industry connections explored throughout the Data Engineering Ecosystem course.
+          </p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Box 1 -->
+          <div class="bg-wine-950/60 p-6 sm:p-7 rounded-2xl border border-wine-700/50 hover:border-gold-400/60 transition duration-300 space-y-3 group">
+            <div class="flex items-center justify-between">
+              <span class="font-anton text-3xl text-gold-400 group-hover:scale-110 transition-transform">01</span>
+              <span class="w-8 h-8 rounded-full bg-wine-800 flex items-center justify-center text-xs text-gold-400"><i class="fa-solid fa-database"></i></span>
+            </div>
+            <h3 class="font-bold text-cream-100 text-xl group-hover:text-gold-400 transition-colors">
+              FOUNDATIONS
+            </h3>
+            <p class="text-cream-200 text-sm leading-relaxed font-light">
+              Deep dive into enterprise data platforms, relational vs non-relational storage paradigms, indexing algorithms, and modern data warehouse architectures.
+            </p>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="bg-wine-950/60 p-6 sm:p-7 rounded-2xl border border-wine-700/50 hover:border-gold-400/60 transition duration-300 space-y-3 group">
+            <div class="flex items-center justify-between">
+              <span class="font-anton text-3xl text-gold-400 group-hover:scale-110 transition-transform">02</span>
+              <span class="w-8 h-8 rounded-full bg-wine-800 flex items-center justify-center text-xs text-gold-400"><i class="fa-solid fa-code"></i></span>
+            </div>
+            <h3 class="font-bold text-cream-100 text-xl group-hover:text-gold-400 transition-colors">
+              TOOLS & TECH
+            </h3>
+            <p class="text-cream-200 text-sm leading-relaxed font-light">
+              Hands-on execution using Figma for UI/UX prototyping, Python for web scraping and data manipulation, SQL for querying, and Git for version control.
+            </p>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="bg-wine-950/60 p-6 sm:p-7 rounded-2xl border border-wine-700/50 hover:border-gold-400/60 transition duration-300 space-y-3 group">
+            <div class="flex items-center justify-between">
+              <span class="font-anton text-3xl text-gold-400 group-hover:scale-110 transition-transform">03</span>
+              <span class="w-8 h-8 rounded-full bg-wine-800 flex items-center justify-center text-xs text-gold-400"><i class="fa-solid fa-shield-halved"></i></span>
+            </div>
+            <h3 class="font-bold text-cream-100 text-xl group-hover:text-gold-400 transition-colors">
+              GOVERNANCE
+            </h3>
+            <p class="text-cream-200 text-sm leading-relaxed font-light">
+              Principles of data quality control, PDPA & GDPR privacy regulations, ethical AI considerations, and data lifecycle security standards.
+            </p>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="bg-wine-950/60 p-6 sm:p-7 rounded-2xl border border-wine-700/50 hover:border-gold-400/60 transition duration-300 space-y-3 group">
+            <div class="flex items-center justify-between">
+              <span class="font-anton text-3xl text-gold-400 group-hover:scale-110 transition-transform">04</span>
+              <span class="w-8 h-8 rounded-full bg-wine-800 flex items-center justify-center text-xs text-gold-400"><i class="fa-solid fa-network-wired"></i></span>
+            </div>
+            <h3 class="font-bold text-cream-100 text-xl group-hover:text-gold-400 transition-colors">
+              INDUSTRY CONNECTIONS
+            </h3>
+            <p class="text-cream-200 text-sm leading-relaxed font-light">
+              Understanding real-world data ecosystem roles (Data Engineer vs Data Scientist vs Analytics Engineer), cloud integration, and enterprise CI/CD workflows.
+            </p>
+          </div>
+
+        </div>
+
       </div>
+
     </section>
 
-
+    <!-- =================================================================== -->
     <!-- TAB 3: WORKS & ARTIFACTS CONTENT -->
-    <section id="works" class="tab-content">
-      <div class="card-header-banner">
-        <h2>SELECTED WORKS & ARTIFACTS</h2>
+    <!-- =================================================================== -->
+    <section id="works" class="tab-content space-y-10">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-wine-800/15 pb-6 gap-4">
+        <div>
+          <span class="text-wine-800 tracking-widest text-xs font-mono font-bold">/// FEATURED PROJECTS</span>
+          <h2 class="font-anton text-4xl sm:text-5xl text-wine-900 tracking-wide mt-1">
+            SELECTED WORKS & ARTIFACTS
+          </h2>
+        </div>
+        <p class="text-xs text-slate-600 max-w-xs sm:text-right">
+          Practical applications, design thinking prototypes, and automated data extraction pipelines.
+        </p>
       </div>
 
-      <!-- PROJECT 1 CARD -->
-      <article class="card light-card project-card">
-        <div class="card-dots">•••</div>
-        <h2 class="card-title">PROJECT 01: DESIGN THINKING & FIGMA</h2>
+      <!-- PROJECT 1 CARD (LIGHT ELEGANT STYLE) -->
+      <article class="bg-white rounded-3xl p-6 sm:p-10 border border-wine-800/15 shadow-xl hover:shadow-2xl transition-all space-y-8">
         
-        <div class="project-grid">
-          <!-- Left Column: Artifacts -->
-          <div class="project-left">
-            <div class="section-label">SECTION C: DELIVERABLES</div>
-            <div class="img-frame">
-              <img src="images/figma-prototype-screenshot.png" alt="Figma Prototype Screenshot">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-wine-800"></span>
+            <h2 class="font-anton text-2xl sm:text-3xl text-wine-900 tracking-wide">
+              PROJECT 01: DESIGN THINKING & FIGMA PROTOTYPING
+            </h2>
+          </div>
+          <span class="text-xs font-mono font-bold text-wine-800 bg-wine-800/10 px-3 py-1 rounded-full">UX / UI DESIGN</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Left Column: Artifact Deliverable -->
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-wine-800 block">
+              SECTION C: DELIVERABLES
+            </span>
+            
+            <div class="relative group rounded-2xl overflow-hidden border border-wine-800/10 shadow-md bg-cream-50">
+              <img 
+                src="images/figma-prototype-screenshot.png" 
+                alt="Figma Prototype Screenshot" 
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/4a0017/ffffff?text=Figma+Prototype+UI';" 
+                class="w-full h-auto object-cover group-hover:scale-105 transition duration-500"
+              >
             </div>
-            <p>Applied Design Thinking methodologies to construct an intuitive user interface for a modern data platform.</p>
-            <div class="link-pills">
-              <a href="#" target="_blank" class="pill-link">Figma Prototype ↗</a>
-              <a href="#" target="_blank" class="pill-link">Video Presentation ↗</a>
+
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              Applied human-centered Design Thinking methodologies to construct an intuitive user interface for a modern data platform.
+            </p>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="#" target="_blank" class="flex items-center gap-2 bg-wine-900 hover:bg-wine-800 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm">
+                Figma Prototype <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-gold-400"></i>
+              </a>
+              <a href="#" target="_blank" class="flex items-center gap-2 bg-cream-200 hover:bg-cream-300 text-wine-900 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm">
+                Video Demo <i class="fa-solid fa-play text-[10px]"></i>
+              </a>
             </div>
           </div>
 
           <!-- Right Column: Reflection & Details -->
-          <div class="project-right">
-            <div class="section-label">SECTION D: REFLECTION</div>
-            <p><strong>Challenges:</strong> Translating functional data architecture into simple user workflows required multiple design iterations.</p>
-            <p><strong>Decisions:</strong> Prioritized a clean dashboard layout to reduce user friction.</p>
-            <p><strong>Course Concepts:</strong> User-centered design and interface prototyping in data ecosystems.</p>
-            <p><strong>Improvements:</strong> Plan to integrate real-time interactive analytics preview widgets.</p>
+          <div class="lg:col-span-7 space-y-5 text-sm text-slate-700 border-t lg:border-t-0 lg:border-l border-slate-100 lg:pl-8 pt-6 lg:pt-0">
+            
+            <span class="text-[11px] font-bold uppercase tracking-widest text-wine-800 block">
+              SECTION D: REFLECTION & LEARNINGS
+            </span>
 
-            <div class="section-label margin-top-sm">SECTION E: TAKEAWAYS</div>
-            <p>Strengthened user experience principles and learned how front-end interface design impacts user data entry quality.</p>
-
-            <div class="dark-box margin-top-sm">
-              <div class="section-label light-text">SECTION F: CREDITS & AI DISCLOSURE</div>
-              <p><strong>Sources:</strong> Figma Community UI Design System Kits.</p>
-              <p><strong>AI Tools:</strong> Used ChatGPT for copy editing and structuring presentation outlines.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-cream-100 p-4 rounded-xl border border-wine-800/10">
+                <strong class="text-wine-900 block mb-1 text-xs uppercase font-extrabold">Challenges</strong>
+                <p class="text-xs text-slate-600">Translating complex functional data architecture into simple, zero-friction user workflows required multiple design iterations.</p>
+              </div>
+              <div class="bg-cream-100 p-4 rounded-xl border border-wine-800/10">
+                <strong class="text-wine-900 block mb-1 text-xs uppercase font-extrabold">Decisions</strong>
+                <p class="text-xs text-slate-600">Prioritized a minimalist dashboard layout with dark visual hierarchy to reduce cognitive user friction.</p>
+              </div>
             </div>
+
+            <div class="space-y-2 text-xs">
+              <p><strong class="text-wine-900 font-bold">Course Concepts:</strong> User-centered design, interactive prototyping, and system accessibility in data ecosystems.</p>
+              <p><strong class="text-wine-900 font-bold">Future Improvements:</strong> Plan to integrate real-time interactive analytics preview widgets and live API mock data.</p>
+            </div>
+
+            <!-- Credits Box -->
+            <div class="bg-wine-900 text-cream-100 p-4 rounded-2xl space-y-1.5 border border-wine-800 shadow-inner text-xs">
+              <span class="text-gold-400 font-bold uppercase tracking-wider text-[10px] block">SECTION F: CREDITS & AI DISCLOSURE</span>
+              <p><strong class="text-white">Design Sources:</strong> Figma Community UI Design System Kits & Phosphor Icons.</p>
+              <p><strong class="text-white">AI Tools:</strong> Assisted by ChatGPT for structural copy editing and presentation outline refinement.</p>
+            </div>
+
           </div>
+
         </div>
       </article>
 
-      <!-- PROJECT 2 CARD -->
-      <article class="card dark-card project-card">
-        <div class="card-dots">•••</div>
-        <h2 class="card-title light-text">PROJECT 02: DATA ACQUISITION & ANALYSIS</h2>
+
+      <!-- PROJECT 2 CARD (BURGUNDY DEEP STYLE) -->
+      <article class="bg-gradient-to-br from-wine-900 via-wine-800 to-wine-900 text-white rounded-3xl p-6 sm:p-10 border border-wine-600/30 shadow-2xl space-y-8">
         
-        <div class="project-grid">
-          <!-- Left Column: Artifacts -->
-          <div class="project-left">
-            <div class="section-label light-text">SECTION C: DELIVERABLES</div>
-            <div class="img-frame">
-              <img src="images/data-acquisition-code.png" alt="Data Acquisition Code Screenshot">
+        <div class="flex items-center justify-between border-b border-wine-700/50 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-gold-400"></span>
+            <h2 class="font-anton text-2xl sm:text-3xl text-cream-100 tracking-wide">
+              PROJECT 02: AUTOMATED DATA ACQUISITION & ETL
+            </h2>
+          </div>
+          <span class="text-xs font-mono font-bold text-gold-400 bg-wine-950/80 px-3 py-1 rounded-full border border-gold-500/30">PYTHON / ETL</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Left Column: Artifact Deliverable -->
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-gold-400 block">
+              SECTION C: DELIVERABLES
+            </span>
+            
+            <div class="relative group rounded-2xl overflow-hidden border border-wine-700 shadow-md bg-wine-950">
+              <img 
+                src="images/data-acquisition-code.png" 
+                alt="Data Acquisition Code" 
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/2b000d/ffffff?text=Python+ETL+Code+Script';" 
+                class="w-full h-auto object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100"
+              >
             </div>
-            <p class="light-text">Python-based data extraction pipeline to programmatically acquire, clean, and transform web data into structured formats.</p>
-            <div class="link-pills">
-              <a href="#" target="_blank" class="pill-link light-pill">GitHub Repository ↗</a>
-              <a href="#" target="_blank" class="pill-link light-pill">Dataset Report ↗</a>
+
+            <p class="text-xs text-cream-200 leading-relaxed font-light">
+              Python-based automated data extraction pipeline to programmatically acquire, clean, validate, and transform web data into structured formats.
+            </p>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="#" target="_blank" class="flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-wine-900 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-md">
+                GitHub Repo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+              <a href="#" target="_blank" class="flex items-center gap-2 bg-wine-950 hover:bg-black text-cream-100 px-4 py-2 rounded-xl text-xs font-bold transition-all border border-wine-700">
+                Dataset Report <i class="fa-solid fa-file-lines text-[10px] text-gold-400"></i>
+              </a>
             </div>
           </div>
 
           <!-- Right Column: Reflection & Details -->
-          <div class="project-right light-text">
-            <div class="section-label light-text">SECTION D: REFLECTION</div>
-            <p><strong>Challenges:</strong> Handling dynamic DOM updates and missing values during web extraction.</p>
-            <p><strong>Decisions:</strong> Built automated validation routines to verify schema consistency prior to CSV export.</p>
-            <p><strong>Course Concepts:</strong> Applied ETL pipelines, data ingestion, and cleaning frameworks.</p>
-            <p><strong>Improvements:</strong> Plan to convert the script into an asynchronous pipeline running on cloud schedulers.</p>
+          <div class="lg:col-span-7 space-y-5 text-sm text-cream-200 border-t lg:border-t-0 lg:border-l border-wine-700/50 lg:pl-8 pt-6 lg:pt-0">
+            
+            <span class="text-[11px] font-bold uppercase tracking-widest text-gold-400 block">
+              SECTION D: REFLECTION & LEARNINGS
+            </span>
 
-            <div class="section-label light-text margin-top-sm">SECTION E: TAKEAWAYS</div>
-            <p>Mastered automated programmatic data collection methods crucial for modern data engineering foundations.</p>
-
-            <div class="light-box margin-top-sm">
-              <div class="section-label">SECTION F: CREDITS & AI DISCLOSURE</div>
-              <p><strong>Sources:</strong> Public web e-commerce product listings.</p>
-              <p><strong>AI Tools:</strong> GitHub Copilot was utilized for optimizing regex patterns and code syntax error checking.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-wine-950/60 p-4 rounded-xl border border-wine-700/50">
+                <strong class="text-gold-400 block mb-1 text-xs uppercase font-extrabold">Challenges</strong>
+                <p class="text-xs text-cream-200 font-light">Handling dynamic DOM updates, anti-scraping rate limits, and missing values during web extraction.</p>
+              </div>
+              <div class="bg-wine-950/60 p-4 rounded-xl border border-wine-700/50">
+                <strong class="text-gold-400 block mb-1 text-xs uppercase font-extrabold">Decisions</strong>
+                <p class="text-xs text-cream-200 font-light">Built automated schema validation routines to verify data consistency prior to CSV/SQL database export.</p>
+              </div>
             </div>
+
+            <div class="space-y-2 text-xs font-light">
+              <p><strong class="text-white font-semibold">Course Concepts:</strong> Applied ETL pipelines, automated data ingestion, cleaning frameworks, and regular expressions.</p>
+              <p><strong class="text-white font-semibold">Future Improvements:</strong> Containerize with Docker and convert into an asynchronous pipeline running on cloud schedulers.</p>
+            </div>
+
+            <!-- Credits Box -->
+            <div class="bg-cream-100 text-wine-900 p-4 rounded-2xl space-y-1.5 shadow-md text-xs">
+              <span class="text-wine-800 font-bold uppercase tracking-wider text-[10px] block">SECTION F: CREDITS & AI DISCLOSURE</span>
+              <p><strong>Sources:</strong> Public web e-commerce product listings & BeautifulSoup documentation.</p>
+              <p><strong>AI Tools:</strong> GitHub Copilot was utilized for optimizing regex patterns and syntax error checking.</p>
+            </div>
+
           </div>
+
         </div>
       </article>
 
@@ -272,20 +738,51 @@
 
   </main>
 
-  <footer class="site-footer">
-    <p>© 2026 YOUR NAME | UTM FACULTY OF COMPUTING | SCST1133 E-PORTFOLIO</p>
+  <!-- FOOTER -->
+  <footer class="bg-wine-900 text-cream-200 border-t border-wine-800 py-8 text-center text-xs space-y-2 mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-anton text-lg text-gold-400">ALYA FAQIHAH</span>
+        <span class="text-wine-400">|</span>
+        <span class="text-xs">UTM CS (Data Engineering)</span>
+      </div>
+      <p class="text-cream-300">
+        © 2026 ALYA FAQIHAH | UTM FACULTY OF COMPUTING | SCST1133 E-PORTFOLIO
+      </p>
+    </div>
   </footer>
 
+  <!-- JAVASCRIPT TAB SWITCHER -->
   <script>
     function switchTab(tabId) {
+      // Hide all tabs
       const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.classList.remove('active'));
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
 
+      // Remove active button styles
       const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-wine-800', 'text-white', 'shadow-md');
+        btn.classList.add('text-wine-900', 'hover:bg-wine-800/10');
+      });
 
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      // Show targeted tab
+      const targetTab = document.getElementById(tabId);
+      if (targetTab) {
+        targetTab.classList.add('active');
+      }
+
+      // Highlight active button
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-wine-900', 'hover:bg-wine-800/10');
+        activeBtn.classList.add('bg-wine-800', 'text-white', 'shadow-md');
+      }
+
+      // Smooth scroll to top of main container on tab change
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
